@@ -92,41 +92,38 @@ $(document).ready(function() {
     }());
 
     // Iframe
-    var iframeDaily = document.getElementById('iframeDaily'),
-        iframeWindow = iframeDaily.contentWindow,
-        iframeDocument = iframeDaily.contentDocument,
-        started = false;
+    var $iframeDaily = $('<iframe id="iframeDaily" src="http://touch.dailymotion.com/" style="width: 100%; height: 0; border: none;"></iframe>'),
+        iframeDaily = $iframeDaily[0];
 
-    BackButton.targetWindow = iframeWindow;
-
-    iframeDaily.style.height = iframeDaily.style.maxHeight = (window.innerHeight - 50) + 'px';
-
-    iframeWindow.addEventListener('pagechange', function(e)
+    $iframeDaily.on('load', function()
     {
-        if (!started)
+        // Start App
+        setTimeout(function()
         {
+            Spinner.hide();
+            Cover.hide();
+        }, 0);
+
+        var iframeWindow = iframeDaily.contentWindow,
+            iframeDocument = iframeDaily.contentDocument,
             started = true;
-        }
-        else
+
+        BackButton.targetWindow = iframeWindow;
+
+        iframeDaily.style.height = iframeDaily.style.maxHeight = (window.innerHeight - 50) + 'px';
+
+        iframeWindow.addEventListener('pagechange', function(e)
         {
-            BackButton.log(e.data);
-        }
+            if (!started)
+            {
+                started = true;
+            }
+            else
+            {
+                BackButton.log(e.data);
+            }
+        });
     });
-    
-    var startApp = function()
-    {
-        if (started) return;
 
-        Spinner.hide();
-        Cover.hide();
-    };
-
-    if (iframeWindow.mobileinit === true)
-	{
-        startApp();
-	}
-    else
-	{
-		iframeWindow.addEventListener('mobileinit', startApp);
-	}
+    $iframeDaily.appendTo(document.body);
 });
