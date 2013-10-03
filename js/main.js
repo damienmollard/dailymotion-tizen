@@ -1,74 +1,18 @@
+var urls = [];
+var logUrl = true;
+
+function goBack() {
+    if (urls.length === 0) {
+        tizen.application.getCurrentApplication().exit();
+    } else {
+        logUrl = false;
+        urls.shift();
+        console.log(urls);
+        document.getElementById('iframeDaily').contentWindow.history.back();
+    }
+}
+
 $(document).ready(function() {
-
-    // Back Button
-    var BackButton = (function(){
-
-        var button = document.querySelector('.back.button'),
-            $button = $(button),
-            disabled = true,
-            history = [],
-            clicked = false,
-            enable, disable, onClick, log, back;
-
-        try
-        {
-            enable = function()
-            {
-                disabled = false;
-                $button.removeClass('disabled');
-            };
-
-            disable = function()
-            {
-                disabled = true;
-                $button.addClass('disabled');
-            };
-
-            onClick = function()
-            {
-                if (disabled) return;
-
-                clicked = true;
-
-                BackButton.targetWindow.history.back();
-                history.shift();
-
-                if (history.length === 0)
-                {
-                    disable();
-                }
-
-                console.log(history);
-            };
-
-            log = function(data)
-            {
-                if (clicked)
-                {
-                    clicked = false;
-                    return;
-                }
-
-                history.unshift(data);
-                if (disabled) enable();
-
-                console.log(history);
-            };
-
-            $button.on('click touchend', onClick);
-        }
-        catch (e)
-        {
-            enable = disable = log = function(){};
-        }
-
-        return {
-            enable: enable,
-            disable: disable,
-            log: log,
-            disabled: disabled
-        };
-    }());
 
     // Spinner
     var Spinner = (function(){
@@ -92,38 +36,42 @@ $(document).ready(function() {
     }());
 
     // Iframe
-    var $iframeDaily = $('<iframe id="iframeDaily" src="http://touch.dailymotion.com/" style="width: 100%; height: 0; border: none;"></iframe>'),
+    var $iframeDaily = $('#iframeDaily'),
         iframeDaily = $iframeDaily[0];
 
-    $iframeDaily.on('load', function()
-    {
+    $iframeDaily.on('load', function() {
+
         // Start App
-        setTimeout(function()
-        {
+        setTimeout(function() {
             Spinner.hide();
             Cover.hide();
         }, 0);
 
-        var iframeWindow = iframeDaily.contentWindow,
-            iframeDocument = iframeDaily.contentDocument,
-            started = true;
-
-        BackButton.targetWindow = iframeWindow;
-
-        iframeDaily.style.height = iframeDaily.style.maxHeight = (window.innerHeight - 50) + 'px';
-
-        iframeWindow.addEventListener('pagechange', function(e)
-        {
-            if (!started)
-            {
-                started = true;
+        iframeDaily.contentWindow.addEventListener('pagechange', function(e) {
+            if (!logUrl) {
+                logUrl = true;
+                return;
             }
-            else
-            {
-                BackButton.log(e.data);
-            }
+            urls.unshift(e.data);
+            console.log(urls);
         });
     });
 
-    $iframeDaily.appendTo(document.body);
+    document.addEventListener('tizenhwkey', function(e) {
+        if(e.keyName === "back") {
+            goBack();
+        }
+    });
+
+    /*
+    // Enable screen auto-rotation
+    tizen.systeminfo.addPropertyValueChangeListener('DEVICE_ORIENTATION', function(orientation) {
+        var orientationStatus = orientation.status.toLowerCase().replace('_', '-');
+        screen.unlockOrientation();
+        screen.lockOrientation(orientationStatus);
+    }, function(error) {
+        throw "Impossible de modifier l'orientation.";
+    });
+    */
+
 });

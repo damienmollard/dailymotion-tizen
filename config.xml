@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.dailymotion.com" version="1.0.0" viewmodes="maximized">
     <access origin="*"/>
-    <tizen:application id="3vhELnN8vM.Dailymotion" package="3vhELnN8vM" required_version="2.1"/>
+    <tizen:setting screen-orientation="auto-rotation"/>
+    <tizen:application id="3vhELnN8vM.Dailymotion" package="3vhELnN8vM" required_version="2.2"/>
     <content src="index.html"/>
     <icon src="icon.png"/>
     <name>Dailymotion</name>

@@ -9,56 +9,81 @@ html, body
 
 body
 {
-    margin: 0px auto;
+    margin: 0;
 }
 
 #iframeDaily
-{}
-
-#iframeContainer
-{}
-
-.buttonbar
 {
-	position: fixed;
-	height: 50px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	
-	background: #f8f6ef;
-    color: #3b73b6;
-    font-weight: 700;
-    font-size: 1.2727272727273rem;
-    line-height: 50px;
-    -webkit-box-shadow: 0 0 6px 2px rgba(0,0,0, 0.05);
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
-.button
+#spinner
 {
-	display: inline-block;
-	position: relative;
-}
-.button.disabled
-{
-	opacity: 0.25;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    margin-top: 20px;
+    text-indent: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    background-image: url(../images/ajax-loader.png);
+    background-size: cover;
+
+    -webkit-animation-name: spinnerRotate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
 }
 
-.button.back
+@-webkit-keyframes spinnerRotate
 {
-	width: 24px;
-	height: 24px;
-	background-image: url(../images/00_button_back.png);
-	background-size: cover;
-	float: right;
-	margin-right: 15px;
-	margin-top: 15px;
+    from {
+        -webkit-transform:rotate(0deg);
+    }
+    to {
+        -webkit-transform:rotate(360deg);
+    }
 }
-.button.back:active
+
+#cover
 {
-	background-image: url(../images/00_button_back_press.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 998;
+    opacity: 1;
+
+    background: -webkit-radial-gradient(#106CA5, #0A4D75);
+    -webkit-transition: -webkit-transform 500ms ease-in-out;
+
+    text-align: center;
+    line-height: 100%;
 }
-.button.back.disabled:active
+
+#cover.off
 {
-    background-image: url(../images/00_button_back.png);
+    -webkit-transform: translate3d(0,-100%,0);
+}
+
+#cover:after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/DailymotionAppIcon.png);
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
 }
