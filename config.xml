@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.dailymotion.com" version="1.0.0" viewmodes="maximized">
-    <access origin="*"/>
-    <tizen:setting screen-orientation="auto-rotation"/>
-    <tizen:application id="3vhELnN8vM.Dailymotion" package="3vhELnN8vM" required_version="2.2"/>
+    <access origin="*"></access>
+    <tizen:app-widget id="4u6xW8kjeB.Dailymotion.default" primary="true" update-period="1800" auto-launch="false">
+        <tizen:box-label>Dailymotion</tizen:box-label>
+        <tizen:box-icon src="icon.png"/>
+        <tizen:box-content src="box.html" mouse-event="true" touch-effect="true">
+            <tizen:box-size>1x1</tizen:box-size>
+            <tizen:box-size>2x2</tizen:box-size>
+            <tizen:pd src="pd.html" width="720" height="200"/>
+        </tizen:box-content>
+    </tizen:app-widget>
+    <tizen:application id="4u6xW8kjeB.Dailymotion" package="4u6xW8kjeB" required_version="2.2"/>
     <content src="index.html"/>
     <icon src="icon.png"/>
     <name>Dailymotion</name>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:setting screen-orientation="auto-rotation" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>
