@@ -57,6 +57,13 @@ $(document).ready(function() {
         });
     });
 
+    var reqAppControl = tizen.application.getCurrentApplication().getRequestedAppControl();
+    if (reqAppControl && reqAppControl.appControl && reqAppControl.appControl.operation === 'video') {
+        iframeDaily.src = reqAppControl.appControl.uri;
+    } else {
+        iframeDaily.src = 'http://touch.dailymotion.com/';
+    }
+
     document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName === "back") {
             goBack();
