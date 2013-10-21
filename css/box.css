@@ -42,7 +42,7 @@ html, body
     color: #ddd;
     white-space:nowrap;
     overflow:hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
 #widget-title strong {

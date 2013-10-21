@@ -1,5 +1,6 @@
 * {
     font-family: Tizen, Helvetica;
+    font-size: 12px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -11,9 +12,94 @@ html, body
 }
 
 body {
-    background-color: #555;
+    color: #fff;
+    position: relative;
+    background-color: transparent;
 }
 
-button {
-    padding: 10px;
+#wrapper {
+    background-color: #222;
+    position: absolute;
+    left: 0;
+    right: 0;
+    /*
+    top: 12px;
+    bottom: 12px;
+    */
+    top: 0;
+    bottom: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /*height: 100%;*/
+}
+
+li {
+    float: left;
+    width: 180px;
+    height: 120px;
+    display: block;
+    margin: 10px 5px;
+    padding: 0;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+li.active {
+    box-shadow: 0 0 8px #44ccfd;
+    border: 1px solid #45b5d8;
+}
+
+#bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    padding-right: 70px;
+}
+
+#owner {
+    color: #ddd;
+}
+
+#reload {
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.reload-rotate {
+    -webkit-animation-name: reloadRotate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes reloadRotate
+{
+    from {
+        -webkit-transform:rotate(0deg);
+    }
+    to {
+        -webkit-transform:rotate(360deg);
+    }
+}
+
+#dailymotion {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 28px;
+    height: 28px;
 }
