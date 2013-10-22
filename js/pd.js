@@ -1,5 +1,25 @@
 var videos = [];
 
+function onAppWidgetReady() {
+    listenBoxMessage();
+}
+
+function listenBoxMessage() {
+    window.addEventListener("boxmessage",
+    function(e) {
+        refresh();
+    }, false);
+}
+
+function getParameters() {
+   var searchString = window.location.search.substring(1), params = searchString.split("&"), info = {};
+   for (var i = 0; i < params.length; i++) {
+      var val = params[i].split("=");
+      info[unescape(val[0])] = unescape(val[1]);
+   } 
+   return info;
+}
+
 function selectedVideoAtIndex(index) {
     var video = videos[index];
     $('#title').html(video.title);
@@ -52,6 +72,8 @@ function refresh() {
     selectedVideoAtIndex(0);
 
     $('#reload').removeClass('reload-rotate');
+
+    $slidee.css('margin-left', (($('li').first().width() - $('#wrapper').width()) / 2) + 10 + 'px');
 }
 
 $(function () {
@@ -73,15 +95,17 @@ $(function () {
         window.addEventListener("appwidgetready", onAppWidgetReady, false);
     }
 
-    function onAppWidgetReady() {
-        listenBoxMessage();
-    }
+    var params = getParameters();
+    var direction = params['pdopen-direction'];
+    var xpos = params['pdopen-arrow-xpos'];
 
-    function listenBoxMessage() {
-        window.addEventListener("boxmessage",
-        function(e) {
-            refresh();
-        }, false);
+    if (direction === 'up') {
+        $('#arrow-down').css('left', xpos/2+'px');
+        $('#arrow-up').hide();
+    } else {
+        $('#arrow-up').css('left', xpos/2+'px');
+        $('#arrow-down').hide();
+        
     }
 
 }());
