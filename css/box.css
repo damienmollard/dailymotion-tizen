@@ -1,6 +1,5 @@
 * {
     font-family: Tizen, Helvetica;
-    font-size: 12px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -33,7 +32,7 @@ html, body
 }
 
 #widget-title {
-    box-sizing: border-box;
+    box-sizing: border-box;    
     position: absolute;
     top: 0;
     left: 0;
@@ -44,6 +43,14 @@ html, body
     white-space:nowrap;
     overflow:hidden;
     text-overflow: ellipsis;
+}
+
+#widget-title #title {
+	font-size: 18px;
+}
+
+#widget-title #owner {
+	font-size: 14px;
 }
 
 #widget-title strong {
@@ -57,16 +64,16 @@ html, body
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40px;
-    line-height: 50%;
+    height: 32px;
+    line-height: 220%;
     overflow: hidden;
-    padding-left: 42px;
+    padding-left: 34px;
     background-image: url(../icon.png);
     background-repeat: no-repeat;
-    background-size: 32px 32px;
+    background-size: 24px 24px;
     background-position: 5px 4px;
     color: #FFF;
-    font-size: 32pt;
+    font-size: 16px;
     text-shadow: 1px 1px 1px #000, -1px -1px -1px #000;
 }
 
