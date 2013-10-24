@@ -50,14 +50,6 @@ html, body
     color: #fff;
 }
 
-#widget-title #title {
-    font-size: 34pt;
-}
-
-#widget-title #owner {
-    font-size: 32pt;
-}
-
 #widget-bar {
     z-index: 1000;
     box-sizing: border-box;
@@ -65,14 +57,14 @@ html, body
     bottom: 0;
     left: 0;
     right: 0;
-    height: 52px;
+    height: 40px;
     line-height: 67.5%;
     overflow: hidden;
-    padding-left: 52px;
+    padding-left: 42px;
     background-image: url(../icon.png);
     background-repeat: no-repeat;
     background-size: 32px 32px;
-    background-position: 10px 8px;
+    background-position: 5px 4px;
     color: #FFF;
     font-size: 32pt;
     text-shadow: 1px 1px 1px #000, -1px -1px -1px #000;
