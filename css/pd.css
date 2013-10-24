@@ -19,7 +19,7 @@ body {
 
 #arrow-up {
     position: absolute;
-    top: 0;
+    top: 10px;
     width: 0; 
     height: 0; 
     border-left: 5px solid transparent;
@@ -30,7 +30,7 @@ body {
 
 #arrow-down {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     width: 0; 
     height: 0; 
     border-left: 5px solid transparent;
@@ -44,8 +44,8 @@ body {
     position: absolute;
     left: 5px;
     right: 5px;
-    top: 5px;
-    bottom: 5px;
+    top: 15px;
+    bottom: 10px;
     border-radius: 4px;
 }
 

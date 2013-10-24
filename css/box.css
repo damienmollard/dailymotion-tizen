@@ -58,7 +58,7 @@ html, body
     left: 0;
     right: 0;
     height: 40px;
-    line-height: 67.5%;
+    line-height: 50%;
     overflow: hidden;
     padding-left: 42px;
     background-image: url(../icon.png);
