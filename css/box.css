@@ -32,12 +32,12 @@ html, body
 }
 
 #widget-title {
-    box-sizing: border-box;    
+    box-sizing: border-box;
+    text-shadow: 1px 1px 1px #000, -1px -1px -1px #000;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .5);
     padding: 4px;
     color: #ddd;
     white-space:nowrap;
@@ -65,7 +65,7 @@ html, body
     left: 0;
     right: 0;
     height: 32px;
-    line-height: 220%;
+    line-height: 190%;
     overflow: hidden;
     padding-left: 34px;
     background-image: url(../icon.png);
@@ -102,6 +102,6 @@ html, body
     #widget
     {
         border-radius: 4px;
-        border: 3px solid rgba(255, 255, 255, .8);
+        border: 3px solid rgba(255, 255, 255, .2);
     }
 }
