@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.dailymotion.com" version="1.1" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.dailymotion.com" version="1.1" viewmodes="windowed">
     <access origin="*"></access>
     <tizen:app-widget id="4u6xW8kjeB.Dailymotion.default" primary="true" auto-launch="false" update-period="1800.0">
         <tizen:box-label>Dailymotion</tizen:box-label>
