@@ -28,13 +28,14 @@ function selectedVideoAtIndex(index) {
 
 function refresh() {
     videos = JSON.parse(localStorage.videos);
+    var images = JSON.parse(localStorage.images);
 
     $slidee = $('#slidee');
     $slidee.empty();
 
     $.each(videos, function(i, video) {
         $thumbnail = $('<li></li>');
-        $thumbnail.css('background-image', 'url('+video.thumbnail_360_url+')');
+        $thumbnail.css('background-image', 'url('+images[i]+')');
         $thumbnail.click(function() {
             var appControl = new tizen.ApplicationControl('video', video.url);
             tizen.application.launchAppControl(appControl, tizen.application.getCurrentApplication().appInfo.id,
