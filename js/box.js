@@ -32,13 +32,13 @@ function showWidget() {
     window.appwidget.sendMessageToPd('reload');
 
     var videos = JSON.parse(localStorage.videos);
-    var video = videos[0];
+    var video = videos.length > 0 ? videos[0] : null;
     var images = JSON.parse(localStorage.images);
-    var image = images[0];
+    var image = images.length > 0 ? images[0] : "images/thumbnail.jpg";
 
     $('#widget-thumbnail').css('background-image', 'url('+image+')');
-    $('#title').html(video.title);
-    $('#owner').html(video['owner.screenname']);
+    $('#title').html(video ? video.title : '');
+    $('#owner').html(video ? video['owner.screenname'] : '');
 
     $('#widget').unbind().click(function() {
         if (window.innerWidth < 100) {
