@@ -40,23 +40,28 @@ function showWidget() {
     $('#title').html(video ? video.title : '');
     $('#owner').html(video ? video['owner.screenname'] : '');
 
-    $('#widget').unbind().click(function() {
-        if (window.innerWidth < 100) {
-            // 1x1 widget
-            tizen.application.launch(tizen.application.getCurrentApplication().appInfo.id);
-        } else {
-            // other sizes
-            var appControl = new tizen.ApplicationControl('video', video.url);
-            tizen.application.launchAppControl(appControl, tizen.application.getCurrentApplication().appInfo.id,
-                function() {
-                    console.log("launch application control succeed");
-                },
-                function(e) {
-                    console.log("launch application control failed. reason: " + e.message);
+     $('#widget').unbind().click(function() {
+                var appId = "4u6xW8kjeB.Dailymotion";
+
+                if (window.innerWidth < 100) {
+                    // 1x1 widget
+                    tizen.application.launch(appId);
+                } else {
+                    // other sizes
+                    var appControl = new tizen.ApplicationControl('video', video.url);
+                    tizen.application.launchAppControl(appControl, appId,
+                        function() {
+                            console.log("launch application control succeed");
+                        },
+                        function(e) {
+                            console.log("launch application control failed. reason: " + e.message);
+                        }
+                    );
                 }
-            );
-        }
-    });
+            });
+
+        },
+
 }
 
 function queryVideos() {
